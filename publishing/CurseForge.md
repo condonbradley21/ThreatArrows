@@ -66,3 +66,7 @@ Submitted on November 27, 2026.
 ## Gallery update
 
 Five images uploaded with descriptive titles/captions on November 27, 2026: author-supplied combat screenshot, color-circle screenshot, settings screenshot, branded feature banner, and labeled arrow artwork preview. Actual screenshots appear first. Source assets and upload copies are under `publishing/gallery/`.
+
+## 2.3.1 update
+
+Submitted November 27, 2026: **Threat Arrows 2.3.1 - Forever Beta**, file ID **9857169**, tagged Forever 1.60.1 only. Status verified: Under Review. Removes square aggro glow and flashes only arrow artwork. GitHub prerelease: https://github.com/condonbradley21/ThreatArrows/releases/tag/v2.3.1-beta
