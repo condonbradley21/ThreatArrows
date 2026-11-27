@@ -9,7 +9,7 @@ Interface: 16001
 Release type: Beta (initial public distribution)
 License: All Rights Reserved
 Icon: publishing/ThreatArrows-Icon.png
-Suggested categories: Combat; Unit Frames
+Categories: Combat; Tank
 Source: https://github.com/condonbradley21/ThreatArrows
 Issues: https://github.com/condonbradley21/ThreatArrows/issues
 
@@ -47,3 +47,18 @@ Initial public beta: four textured arrow styles, configurable threat-state color
 Created with the built-in image generation tool. Final prompt:
 
 > Create a polished original square 1024x1024 project icon for a fantasy MMO addon named Threat Arrows. No lettering or text. A single unmistakable downward-pointing arrow, sculpted silver and antique gold armor rim with a vivid emerald luminous core, elegant hand-painted premium fantasy game UI art, bold simple silhouette recognizable at 64 pixels. Arrow centered with generous margins on dark charcoal circular medallion backdrop, subtle green rim light and fine restrained sparks. Crisp antialiased edges, dimensional bevels, premium artistic craftsmanship, controlled glow. Original design only, no existing game logos, no Warcraft logo, no brand marks, no characters, no scenery, no percentage numbers, no charts. Single cohesive icon with strong contrast.
+
+## Submission record
+
+Submitted on November 27, 2026.
+
+- CurseForge project ID: 1836097.
+- Project: https://www.curseforge.com/wow/addons/threat-arrows
+- Author dashboard: https://authors.curseforge.com/#/projects/1836097/files
+- Uploaded file ID: 9856960.
+- Display name: Threat Arrows 2.3.0 - Forever Beta.
+- Selected game version: WoW Forever 1.60.1 only.
+- License: All Rights Reserved; third-party distribution disabled.
+- Automatic publication after approval enabled.
+- Status at submission: file Processing; new project pending moderator approval.
+- Logo crop completed by the author before submission.
