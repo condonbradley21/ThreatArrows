@@ -1,5 +1,7 @@
 # Threat Arrows
 
+![Threat Arrows feature overview](publishing/gallery/feature-banner.jpg)
+
 A display-only World of Warcraft Forever addon (interface 16001). Current version: **2.3.0**.
 
 ## Features
@@ -51,3 +53,21 @@ This repository contains the standalone Threat Arrows addon, installer and tests
 The release package targets **Forever 1.60.1** only. Build the addon-only ZIP with `python Tools/Build-Release.py`; it is written to `dist/`. The ZIP has a single `ThreatArrows` folder at its root and contains no external installer or runtime settings. CurseForge submission copy and version tags are recorded in [publishing/CurseForge.md](publishing/CurseForge.md).
 
 CurseForge: [Threat Arrows](https://www.curseforge.com/wow/addons/threat-arrows). The initial Forever beta was submitted on November 27, 2026; first publication requires CurseForge moderation.
+
+## Screenshots
+
+### In-game combat
+
+![Wisp arrows and live Threat Watch in combat](publishing/gallery/gameplay-secure-threat.jpg)
+
+### Color circle and live preview
+
+![Actual in-game color picker](publishing/gallery/color-wheel.jpg)
+
+### Appearance and range settings
+
+![Actual in-game appearance settings](publishing/gallery/settings-overview.jpg)
+
+### Arrow artwork preview
+
+![Promotional artwork preview of the four arrow styles](publishing/gallery/arrow-styles-preview.jpg)

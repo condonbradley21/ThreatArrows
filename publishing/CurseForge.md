@@ -62,3 +62,7 @@ Submitted on November 27, 2026.
 - Automatic publication after approval enabled.
 - Status at submission: file Processing; new project pending moderator approval.
 - Logo crop completed by the author before submission.
+
+## Gallery update
+
+Five images uploaded with descriptive titles/captions on November 27, 2026: author-supplied combat screenshot, color-circle screenshot, settings screenshot, branded feature banner, and labeled arrow artwork preview. Actual screenshots appear first. Source assets and upload copies are under `publishing/gallery/`.
