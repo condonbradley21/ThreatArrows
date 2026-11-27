@@ -7,7 +7,7 @@ $running=@(Get-CimInstance Win32_Process | Where-Object {$_.Name -in @('WowB.exe
 if($running.Count){throw 'Close this WoW client before installing the addon.'}
 $destination=Join-Path $root 'Interface/AddOns/ThreatArrows'
 New-Item -ItemType Directory -Force $destination|Out-Null
-foreach($name in @('ThreatArrows.toc','ThreatArrows.lua')){
+foreach($name in @('ThreatArrows.toc','ThreatArrows.lua','LICENSE.txt')){
  Copy-Item -LiteralPath (Join-Path $PSScriptRoot "addons/ThreatArrows/$name") -Destination (Join-Path $destination $name) -Force
 }
 $media=Join-Path $destination 'Media'

@@ -13,6 +13,10 @@ A display-only World of Warcraft Forever addon (interface 16001). Current versio
 
 The addon does not change targets, cast spells or send game input. Range warnings do not change any spell's actual range.
 
+## License
+
+All Rights Reserved. Free to download and use for personal gameplay. See [LICENSE](LICENSE) for terms.
+
 ## Install
 
 1. Download or clone this repository and close WoW.
@@ -41,3 +45,7 @@ python -c "from lupa.lua51 import LuaRuntime; LuaRuntime().execute(open('Tests/T
 See [the detailed addon guide](app/THREAT-ARROWS.md) for commands and range-data limitations. In-game rendering and client API behavior still need a manual check in Forever.
 
 This repository contains the standalone Threat Arrows addon, installer and tests.
+
+## Public distribution
+
+The release package targets **Forever 1.60.1** only. Build the addon-only ZIP with `python Tools/Build-Release.py`; it is written to `dist/`. The ZIP has a single `ThreatArrows` folder at its root and contains no external installer or runtime settings. CurseForge submission copy and version tags are recorded in [publishing/CurseForge.md](publishing/CurseForge.md).

@@ -1,5 +1,8 @@
 ## Interface: 16001
 ## Title: Threat Arrows
+## Author: condonbradley21
+## X-License: All Rights Reserved
+## X-Website: https://github.com/condonbradley21/ThreatArrows
 ## Notes: Text-free artistic arrows, custom threat colors and a draggable minimap settings button.
 ## Version: 2.3.0
 ## SavedVariables: ThreatArrowsDB
