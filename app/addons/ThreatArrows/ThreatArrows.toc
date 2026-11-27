@@ -4,6 +4,6 @@
 ## X-License: All Rights Reserved
 ## X-Website: https://github.com/condonbradley21/ThreatArrows
 ## Notes: Text-free artistic arrows, custom threat colors and a draggable minimap settings button.
-## Version: 2.3.0
+## Version: 2.3.1
 ## SavedVariables: ThreatArrowsDB
 ThreatArrows.lua

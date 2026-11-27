@@ -122,3 +122,8 @@ Click any threat-state color swatch to open the color circle. Drag around the ci
 Open the minimap icon's settings or `/ta options` and set **Max taunt distance** from 1–40 yards. Default: **10 yards**. Changes apply immediately and persist across reloads. The Threat Watch range marker is now T: green inside the configured distance, red outside (with OUT OF RANGE), or ? when range is unavailable. This is a display warning only.
 
 Validated public client distance is compared with the configured threshold, including the boundary. If distance is unavailable, a Judgement spell check is used only when its reported minimum/maximum range actually proves the configured threshold. A shorter spell being out of range cannot prove a mob is beyond a longer chosen distance; a longer spell being in range cannot prove a mob is within a shorter distance. Such cases, restricted values and unsupported APIs show unknown rather than a guessed result. Settings defaults restore 10 yards; resetting arrow appearance alone preserves the chosen distance.
+
+
+## Arrow-only aggro warnings (2.3.1)
+
+Losing or lost aggro now flashes the arrow artwork itself on a 0.8-second cycle. The square action-button glow has been removed. Warning labels stay steady; selected-target bounce, configured opacity and custom colors are preserved. Secure/unknown threat restores steady arrow artwork.

@@ -34,6 +34,7 @@ local function object(parent)
         if key=="SetColorTexture" then return function(s,...) s.fill={...} end end
         if key=="IsMouseOver" then return function(s) return s.hovered or false end end
         if key=="SetVertexColor" then return function(s,r,g,b) s.color={r,g,b} end end
+        if key=="SetTextColor" then return function(s,...) s.textColor={...} end end
         if key=="SetAlpha" then return function(s,v) s.alpha=v end end
         if key=="SetScale" then return function(s,v) s.scale=v end end
         if key=="SetPoint" then return function(s,...) s.point={...} end end
@@ -139,11 +140,11 @@ local roster=panelRows();assert(#roster==2)
 assert(roster[2].unit=="nameplate2" and roster[2].state.text=="TARGET")
 assert(roster[2].percent.text=="20%")
 local current=plates.nameplate1.ThreatArrowsOverlay
-assert(current.warning=="LOSING" and current.halo.shown and current.warningText.text=="LOSING")
+assert(current.warning=="LOSING" and current.art.alpha==1 and current.warningText.text=="LOSING")
 local lost=plates.nameplate2.ThreatArrowsOverlay
-assert(lost.warning=="LOST" and lost.halo.shown)
-tick();local alpha=lost.halo.alpha;tick();assert(lost.halo.alpha~=alpha,"halo pulses")
-units.nameplate1.status=3;tick();assert(not current.halo.shown and current.warningText.text=="")
+assert(lost.warning=="LOST" and lost.halo==nil and lost.art.alpha>=0.3 and lost.art.alpha<=1)
+tick();local alpha=lost.art.alpha;tick();assert(lost.art.alpha~=alpha and lost.art.alpha>=0.3 and lost.art.alpha<=1,"arrow itself pulses")
+units.nameplate1.status=3;tick();assert(current.art.alpha==1 and current.warningText.text=="" and current.halo==nil)
 units.nameplate2.raw=secret;tick();assert(panelRows()[2].percent.formattedValue==secret)
 units.nameplate2.dead=true;tick();assert(#panelRows()==1,"dead row removed")
 units.nameplate2.dead=false
@@ -157,7 +158,7 @@ SlashCmdList.THREATARROWS("off");assert(not panel.shown)
 SlashCmdList.THREATARROWS("on");assert(panel.shown)
 for i=1,15 do event("NAME_PLATE_UNIT_REMOVED","nameplate"..i) end
 assert(#panelRows()==0,"removed plates leave no rows")
-print("PASS: losing/lost halos and pulse, secure reset, panel roster, duplicate mob names, selected row, secret display, death/removal, 15-mob scrolling and panel toggles.")
+print("PASS: losing/lost arrow flashing without halo, secure reset, panel roster, duplicate mob names, selected row, secret display, death/removal, 15-mob scrolling and panel toggles.")
 
 SlashCmdList.THREATARROWS("panel unlock")
 panel.scripts.OnDragStart(panel);assert(panel.moving)
@@ -344,7 +345,7 @@ for _,pair in ipairs({{2,'losing'},{0,'lost'}}) do
     local f=_G['ThreatArrowsColor'..pair[2]];f:SetText('8844CC');f.scripts.OnEnterPressed(f)
     units.nameplate21={combat=true,status=pair[1],raw={secret=true}};tick()
     assert(math.abs(appearance.tint[3]-0.8)<0.001,'restricted percentage keeps custom state color')
-    assert(math.abs(appearance.halo.color[3]-0.8)<0.001,'warning uses palette')
+    assert(math.abs(appearance.warningText.textColor[3]-0.8)<0.001,'warning uses palette')
 end
 local unknown=ThreatArrowsColorunknown;unknown:SetText('445566');unknown.scripts.OnEnterPressed(unknown)
 units.nameplate21={combat=true};tick();assert(math.abs(appearance.tint[3]-0.4)<0.001,'unknown palette')
@@ -480,3 +481,17 @@ IsSpellInRange=function() return false end
 tick();assert(panelRows()[1].inTauntRange==false,'legacy spell info outside')
 GetSpellInfo=nil;IsSpellInRange=nil
 print('PASS: legacy spell metadata uses actual min/max ranges, not spell ID.')
+
+-- Warning flashes only arrow artwork; label and configured parent opacity stay steady.
+units.nameplate21={combat=true,status=2};target='nameplate21';event('PLAYER_TARGET_CHANGED')
+local flashing=plates.nameplate21.ThreatArrowsOverlay
+local parentAlpha=flashing.alpha
+for _,style in ipairs({'Forged','Arcane','Sentinel','Wisp'}) do
+    _G['ThreatArrowsStyle'..style].scripts.OnClick()
+    local before=flashing.art.alpha;tick()
+    assert(flashing.art.alpha~=before and flashing.halo==nil,'artwork-only flash in every style')
+    assert(flashing.alpha==parentAlpha,'target bounce preserves configured parent opacity')
+end
+units.nameplate21.status=3;tick();assert(flashing.art.alpha==1 and flashing.warningText.text=='','secure resets arrow alpha')
+units.nameplate21={combat=true};tick();assert(flashing.art.alpha==1,'unknown stays steady')
+print('PASS: all four styles flash artwork only, target bounce preserves opacity, secure and unknown restore steady arrows, no square glow texture.')

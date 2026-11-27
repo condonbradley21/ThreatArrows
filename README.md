@@ -2,12 +2,13 @@
 
 ![Threat Arrows feature overview](publishing/gallery/feature-banner.jpg)
 
-A display-only World of Warcraft Forever addon (interface 16001). Current version: **2.3.0**.
+A display-only World of Warcraft Forever addon (interface 16001). Current version: **2.3.1**.
 
 ## Features
 
 - Four smooth arrow styles: Forged, Arcane, Sentinel and Wisp.
 - Custom secure, losing, lost and unknown threat colors, with a circular color picker, brightness control and live preview.
+- Arrow-only flashing when aggro is losing/lost, without a square glow.
 - Clean arrows without percentage text; the Threat Watch panel retains threat percentages.
 - A draggable minimap shield icon: left-click opens settings, right-click toggles Threat Watch.
 - An adjustable range warning from 1–40 yards, defaulting to 10 yards. Unavailable or restricted range information shows unknown.

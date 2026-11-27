@@ -66,12 +66,6 @@ local function makeArrow(plate)
     arrow.parts={{texture=arrow.art,shade=1}}
     applyStyle(arrow)
     arrow:SetSize(64,64)
-    arrow.halo = arrow:CreateTexture(nil, "BACKGROUND")
-    arrow.halo:SetTexture("Interface\\Buttons\\UI-ActionButton-Border")
-    arrow.halo:SetBlendMode("ADD")
-    arrow.halo:SetSize(110,110)
-    arrow.halo:SetPoint("CENTER",arrow,"CENTER",0,0)
-    arrow.halo:Hide()
     arrow.warningText = arrow:CreateFontString(nil,"OVERLAY")
     arrow.warningText:SetFont("Fonts\\FRIZQT__.TTF",10,"OUTLINE")
     arrow.warningText:SetPoint("TOP",arrow,"BOTTOM",0,-2)
@@ -214,7 +208,11 @@ local function formatPercent(text,pct)
     if pct then displayed=pcall(text.SetFormattedText,text,"%.0f%%",pct.value) end
     if not displayed then text:SetText("?") end
 end
+local function warningAlpha(arrow)
+    return arrow.warning and (0.65+0.35*math.cos((arrow.warningPhase or 0)*math.pi*2/0.8)) or 1
+end
 local function update(unit, arrow)
+    local previousWarning=arrow.warning
     arrow.engaged=false; arrow.warning=nil
     if not enabled then arrow:Hide(); arrow.targeted=false; return end
     local ok, r,g,b,pct = pcall(classify, unit)
@@ -238,11 +236,11 @@ local function update(unit, arrow)
     end
     if arrow.warning then
         local wr,wg,wb=palette(arrow.warning=="LOSING" and "losing" or "lost")
-        arrow.halo:SetVertexColor(wr,wg,wb,1)
-        arrow.halo:Show()
         arrow.warningText:SetText(arrow.warning)
         arrow.warningText:SetTextColor(wr,wg,wb,1)
-    else arrow.halo:Hide(); arrow.warningText:SetText("") end
+    else arrow.warningText:SetText("") end
+    if arrow.warning~=previousWarning then arrow.warningPhase=0 end
+    arrow.art:SetAlpha(warningAlpha(arrow))
     local target = selected(unit)
     if target~=arrow.targeted then arrow.phase=0 end
     arrow.targeted=target
@@ -973,7 +971,7 @@ driver:SetScript("OnUpdate", function(_, delta)
     for _,arrow in pairs(active) do
         if enabled and arrow.warning then
             arrow.warningPhase=(arrow.warningPhase or 0)+delta
-            arrow.halo:SetAlpha(0.4+0.3*math.sin(arrow.warningPhase*math.pi*2/0.8))
+            arrow.art:SetAlpha(warningAlpha(arrow))
         end
         if enabled and arrow.targeted then
             arrow.phase=(arrow.phase or 0)+delta
@@ -992,7 +990,7 @@ SlashCmdList.THREATARROWS = function(text)
     cmd = string.lower(cmd or "")
     local n = tonumber(value)
     if cmd == "status" then
-        print("Threat Arrows 2.3.0 | opacity "..settings().opacity.."%")
+        print("Threat Arrows 2.3.1 | opacity "..settings().opacity.."%")
         for unit,arrow in pairs(active) do
             if selected(unit) then print("Selected arrow percentage source: "..(arrow.percentageSource or "unavailable")) end
         end
