@@ -40,4 +40,4 @@ python -c "from lupa.lua51 import LuaRuntime; LuaRuntime().execute(open('Tests/T
 
 See [the detailed addon guide](app/THREAT-ARROWS.md) for commands and range-data limitations. In-game rendering and client API behavior still need a manual check in Forever.
 
-This private repository contains the standalone addon, installer and tests. The healing application and its runtime state are maintained separately.
+This repository contains the standalone Threat Arrows addon, installer and tests.
