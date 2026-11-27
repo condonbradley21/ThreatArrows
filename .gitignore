@@ -1,0 +1,11 @@
+work/
+outputs/
+**/WTF/
+**/remote-data/
+**/.updates/
+**/Grid2HealDetector7.ini
+*.log
+*.zip
+*.bak
+.env
+.env.*

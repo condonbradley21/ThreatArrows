@@ -1,0 +1,6 @@
+## Interface: 16001
+## Title: Threat Arrows
+## Notes: Text-free artistic arrows, custom threat colors and a draggable minimap settings button.
+## Version: 2.3.0
+## SavedVariables: ThreatArrowsDB
+ThreatArrows.lua
